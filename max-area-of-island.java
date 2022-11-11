@@ -8,9 +8,9 @@ class Solution {
         for(int i = 0; i <= l; i++) {
             for(int j = 0; j <= c; j++) {
                 if(grid[i][j] == 1) {
-                    currVal = depthFirstSearch(grid, i, j, 0, l, c);              
+                    currVal = depthFirstSearch(grid, i, j, 0, l, c);
+                    if(currVal > maxVal) maxVal = currVal;
                 }
-                if(currVal > maxVal) maxVal = currVal;
             }
         }
 
