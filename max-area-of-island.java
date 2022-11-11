@@ -4,14 +4,11 @@ class Solution {
         int c = grid[0].length - 1;
         int maxVal = 0;
         int currVal = 0;
-        Map<Map.Entry<Integer,Integer>, Integer> map = new HashMap<>();
 
         for(int i = 0; i <= l; i++) {
             for(int j = 0; j <= c; j++) {
-                if(grid[i][j] != 0) {
-                    if(!map.containsKey(Map.entry(i, j))){
-                        currVal = depthFirstSearch(grid, i, j, 0, l, c, map);
-                    }
+                if(grid[i][j] == 1) {
+                    currVal = depthFirstSearch(grid, i, j, 0, l, c);              
                 }
                 if(currVal > maxVal) maxVal = currVal;
             }
@@ -20,29 +17,29 @@ class Solution {
         return maxVal;
     }
 
-        public int depthFirstSearch(int[][] grid, int rootX, int rootY, int n, int l, int c, Map<Map.Entry<Integer,Integer>, Integer> map){
+        public int depthFirstSearch(int[][] grid, int rootX, int rootY, int n, int l, int c){
         n++;
-        map.put(Map.entry(rootX, rootY), 0);
-        if(rootX + 1 <= l && !map.containsKey(Map.entry(rootX + 1, rootY))){
+        grid[rootX][rootY] = 0;
+        if(rootX + 1 <= l){
             if(grid[rootX + 1][rootY] != 0){
-                n = depthFirstSearch(grid, rootX + 1, rootY, n, l, c, map);
+                n = depthFirstSearch(grid, rootX + 1, rootY, n, l, c);
             }
 
         }
-        if(rootX - 1 >= 0 && !map.containsKey(Map.entry(rootX - 1, rootY))){
+        if(rootX - 1 >= 0){
             if(grid[rootX - 1][rootY] != 0){
-                n = depthFirstSearch(grid, rootX - 1, rootY, n, l, c, map);
+                n = depthFirstSearch(grid, rootX - 1, rootY, n, l, c);
             }
         }
 
-        if(rootY + 1 <= c && !map.containsKey(Map.entry(rootX, rootY + 1))){
+        if(rootY + 1 <= c){
             if(grid[rootX][rootY + 1] != 0){
-                n = depthFirstSearch(grid, rootX, rootY  + 1, n, l, c, map);
+                n = depthFirstSearch(grid, rootX, rootY  + 1, n, l, c);
             }
         }
-        if(rootY - 1 >= 0 && !map.containsKey(Map.entry(rootX, rootY - 1))){
+        if(rootY - 1 >= 0){
             if(grid[rootX][rootY - 1] != 0){
-                n = depthFirstSearch(grid, rootX, rootY - 1, n, l, c, map);
+                n = depthFirstSearch(grid, rootX, rootY - 1, n, l, c);
             }
         }
 
