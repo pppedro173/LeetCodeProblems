@@ -11,28 +11,20 @@ class Solution {
                 sol[0] = m;
                 sol[1] = m;
                 if(m > 0){
-                    if(nums[m - 1] ==  target){
-                        while(aux - 1 >= 0){
-                            if(nums[aux - 1] == target){
-                                sol[0] = aux-1;
-                                aux--;
-                            } else {
-                                break;
-                            }
-                        } 
-                    }
+                    while(aux - 1 >= 0){
+                        if(nums[aux - 1] == target){
+                            sol[0] = aux-1;
+                            aux--;
+                        } else break;  
+                    } 
                 }
                 aux = m;
                 if(m + 1 < nums.length){
-                    if(nums[m + 1] ==  target){
-                        while(aux + 1 < nums.length){
-                            if(nums[aux + 1] == target){
-                                sol[1] = aux + 1;
-                                aux++;
-                            } else {
-                                break;
-                            }
-                        }
+                    while(aux + 1 < nums.length){
+                        if(nums[aux + 1] == target){
+                            sol[1] = aux + 1;
+                            aux++;
+                        } else break; 
                     }
                 }
                 return sol;
@@ -42,4 +34,4 @@ class Solution {
         }
         return sol; 
     }
-}
+}}
